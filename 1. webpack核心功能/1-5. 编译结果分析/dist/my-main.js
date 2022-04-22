@@ -27,6 +27,7 @@
 })({ //该对象保存了所有的模块，以及模块对应的代码
     "./src/a.js": function (module, exports) {
         eval("console.log(\"module a\")\nmodule.exports = \"a\";\n //# sourceURL=webpack:///./src/a.js")
+        // 放在eval里 是为了发生错误时告诉浏览器发生错误的代码地址，更容易调试。 
     },
     "./src/index.js": function (module, exports, __webpack_require) {
         eval("console.log(\"index module\")\nvar a = __webpack_require(\"./src/a.js\")\na.abc();\nconsole.log(a)\n //# sourceURL=webpack:///./src/index.js")
